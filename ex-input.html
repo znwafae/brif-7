@@ -10,17 +10,44 @@
 </head>
 <body>
  
-    <div class="container">
-	        <form id="form" class="form">
-		        <div class="form-control">
-			          <label for="title">Title </label>
-			          <input type="text" placeholder=" enter the title" id="title" />
-			          <small>Error message</small>
-		        </div>
-		        <button>Submit</button>
-	        </form>
-    </div>
+  
+        <form id='form'>
+			    <label for="titre"> <h3>Titre</h3> </label> 
+                <p id="titre_error"></P> 
+			    <input type="text" placeholder=" enter le titre" id="titre" />
+                  
 
+                <label for="auteur"><h3>Auteur</h3> </label>
+                <p id="auteur_error"></P>
+                <input type="text" placeholder=" enter le nom de l'auteur" id="auteur" />
+                  
+
+                <label for="prix"><h3>Prix</h3></label>
+                <p id="prix_error"></P>
+                <input type="text" placeholder=" enter le prix" id="Prix" />
+                   
+
+                <label for="date"><h3>Date de publication</h3></label>
+                <p id="pub_error"></P>
+                <input type="date" placeholder=" enter la date de publication" id="date" />
+
+                <label for="langue"><h3>Langue</h3></label>
+                <p id="langue_error"></p>
+                <select id="language" name="languages">
+                <option>select a language</option>
+                <option value="Arabe">Arabic</option>
+                <option value="Anglais">English</option>
+                <option value="Francais">French</option>
+                </select>
+
+                <label for="type"><h3>Type</h3></label>
+                <p id="type_error"></P>
+                <input type="text" placeholder=" enter le type" id="type" />
+
+              
+                
+		        <button>Submit</button>
+	    </form>
 </body>
 </html>
 
