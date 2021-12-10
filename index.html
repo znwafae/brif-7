@@ -40,14 +40,56 @@
                 <option value="Francais">French</option>
                 </select>
 
+
                 <label for="type"><h3>Type</h3></label>
                 <p id="type_error"></P>
-                <input type="text" placeholder=" enter le type" id="type" />
-
-              
+              <div id="radios">
+                  <div id="inputsType">
+                    <input type="radio"name="fav" id="Roman" value="Roman">
+                    <label class="label_radio">Roman</label >
+                    <input type="radio"  name="fav"  id="Essai" value="Essai">
+                    <label class="label_radio"> Essai</label>
+                    <input type="radio"  name="fav" id="Bande"  value="Bande-Dessinée">
+                    <label class="label_radio">Bande-Dessinée</label>
+                  </div>
+              </div>
                 
-		        <button>Submit</button>
-	    </form>
+		        <button id="btn">Submit</button>
+	    </form> 
+
+
+
+
+
+
+        <table>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Prix</th>
+                <th>Date de publication </th>
+                <th>Langue</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+            <!-- <tr>
+                <td>The Secret</td>
+                <td>Rhonda Byrne</td>
+                <td> 12.33$ </td>
+                <td>November 2006</td>
+                <td>français</td>
+                <td>roman</td>
+            </tr>
+            <tr>
+                <td>Rich Dad Poor Dad</td>
+                <td> Robert Kiyosaki </td>
+                <td> 15.50$ </td>
+                <td>April 1 2000</td>
+                <td>anglais</td>
+                <td>roman</td>
+            </tr>
+            -->
+        </table>
 </body>
 </html>
 
