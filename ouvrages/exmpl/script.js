@@ -3,6 +3,8 @@ var titre = document.getElementById('titre');
 var auteur = document.getElementById('auteur');
 var Prix = document.getElementById('Prix');
 var date = document.getElementById('date');
+var language = document.getElementById('language');
+
 
 var roman = document.getElementById('Roman')
 var essai = document.getElementById('Essai')
@@ -114,8 +116,22 @@ function valider(event){
 	}
 	else{type_error.innerHTML = "";}
 
+
 	// langue value
 	
+	if(language.value=="select a language"){
+		langue_error.innerHTML = "nope!";
+		langue_error.style.color="red";
+		language.style.borderColor = "red";
+	}
+	else{
+		langue_error.innerHTML = "";
+		langue_error.style.color="green";
+		language.style.borderColor = "green";	
+
+	}
+
+    //  add rows to teble
 		var table = document.getElementsByTagName("table")[0];
 
 		var row=table.insertRow(-1);
@@ -124,8 +140,17 @@ function valider(event){
 		row.insertCell(2).innerHTML = Prix.value;
 		row.insertCell(3).innerHTML = date.value;
 		row.insertCell(4).innerHTML = language.options[language.selectedIndex].value;
-		row.insertCell(5).innerHTML = '<input  style="width:60px"type="submit" onclick="deleterow(this)" value="Supprimer">'+
+		row.insertCell(5).innerHTML = '<input  style="width:60px , 	background-color: #684c3ec0"type="submit" onclick="deleterow(this)" value="Supprimer">'+
 		'<input style="width:60px" type="submit" onclick="editrow(this)"  value="Modifier">'
+		
+		// clear input text
+		titre.value = "";
+		auteur.value = "";
+		Prix.value = "";
+		date.value = "";
+		language.value = "select a language";
+			
+
 
 
 
@@ -139,58 +164,46 @@ function valider(event){
 
 	row.insertCell(5).innerHTML = ty_cell;	
 
-	// call the function to set the event to the new row
-	selectedRowToInput();
-
+	 // call the function to set the event to the new row
+	 selectedRowToInput();
 
 }
+
+  // display selected row data into input text
+  function selectedRowToInput()
+  {
+	  
+	  for(var i = 1; i < table.rows.length; i++)
+	  {
+		  table.rows[i].onclick = function()
+		  {
+			// get the seected row index
+			rIndex = this.rowIndex;
+			document.getElementById("titre").value = this.cells[0].innerHTML;
+			document.getElementById("auteur").value = this.cells[1].innerHTML;
+			document.getElementById("Prix").value = this.cells[2].innerHTML;
+			document.getElementById("date").value = this.cells[3].innerHTML;
+			document.getElementById("language").value = this.cells[4].innerHTML;
+			
+		  };
+	  }
+  }
+  selectedRowToInput();
+
+
+
+//  delete button
 
 function deleterow(td) 
 
 {
     if (confirm('Are you sure to delete this record ?')) {
         row = td.parentElement.parentElement;
-        document.getElementById("table").deleteRow(row.rowIndex);
-        resetForm();
+        document.getElementById("table").deleteRow(row.rowIndex);    
     }
 }
-function selectedRowToInput()
-{
-	
-	for(var i = 0; i < table.rows.length; i++)
-	{
-		table.rows[i].onclick = function()
-		{
-		  // get the seected row index
-		  rIndex = this.rowIndex;
-		  document.getElementById("titre").value = this.cells[0].innerHTML;
-		  document.getElementById("auteur").value = this.cells[1].innerHTML;
-		  document.getElementById("Prix").value = this.cells[2].innerHTML;
-		  document.getElementById("date").value = this.cells[3].innerHTML;
-		  document.getElementById("language").value = this.cells[4].innerHTML;
-		//   document.getElementById("age").value = this.cells[5].innerHTML;
-		};
-	}
-}
-selectedRowToInput();
 
-function editHtmlTbleSelectedRow()
-            {
-                var titre = document.getElementById("titre").value,
-				    auteur = document.getElementById("auteur").value,
-                    Prix = document.getElementById("Prix").value;
-					date = document.getElementById("date").value;
-					language = document.getElementById("language").value;
-					// Prix = document.getElementById("Prix").value;
-               if(!checkEmptyInput()){
-                table.rows[rIndex].cells[0].innerHTML = titre;
-                table.rows[rIndex].cells[1].innerHTML = auteur;
-                table.rows[rIndex].cells[2].innerHTML = Prix;
-				table.rows[rIndex].cells[3].innerHTML = date;
-				table.rows[rIndex].cells[4].innerHTML = language;
-				// table.rows[rIndex].cells[2].innerHTML = Prix;
-              }
-            }
+
             
 
 
