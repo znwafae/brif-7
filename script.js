@@ -36,11 +36,11 @@ function valider(event){
 		titre_error.style.color="red";
 		titre.style.borderColor = "red";
 	}
-	else{
-		titre_error.innerHTML = "";
-		titre_error.style.color="green";
-		titre.style.borderColor = "green";
-	}
+	// else{
+	// 	titre_error.innerHTML = "";
+	// 	titre_error.style.color="green";
+	// 	titre.style.borderColor = "green";
+	// }
 
     //   auteur value
 
@@ -59,11 +59,11 @@ function valider(event){
 		auteur_error.style.color="red";
 		auteur.style.borderColor = "red";
 	}
-	else{
-		auteur_error.innerHTML = "";
-		auteur_error.style.color="green";
-		auteur.style.borderColor = "green";
-	}
+	// else{
+	// 	auteur_error.innerHTML = "";
+	// 	auteur_error.style.color="green";
+	// 	auteur.style.borderColor = "green";
+	// }
 
 	// prix value
 	
@@ -73,8 +73,8 @@ function valider(event){
 			if(Prix.value>0)
 			{
 		    prix_error.innerHTML = "";
-		    prix_error.style.color="green";
-		    Prix.style.borderColor = "green";
+		    // prix_error.style.color="green";
+		    // Prix.style.borderColor = "green";
 			}
 			else{
 			prix_error.innerHTML = "nigatif!";
@@ -101,12 +101,12 @@ function valider(event){
 		pub_error.style.color="red";
 		date.style.borderColor = "red";
 	}
-	else{
-		pub_error.innerHTML = "";
-		pub_error.style.color="green";
-		date.style.borderColor = "green";	
+	// else{
+	// 	pub_error.innerHTML = "";
+	// 	pub_error.style.color="green";
+	// 	date.style.borderColor = "green";	
 
-	}
+	// }
 
     // type value
 
@@ -124,12 +124,12 @@ function valider(event){
 		langue_error.style.color="red";
 		language.style.borderColor = "red";
 	}
-	else{
-		langue_error.innerHTML = "";
-		langue_error.style.color="green";
-		language.style.borderColor = "green";	
+	// else{
+	// 	langue_error.innerHTML = "";
+	// 	langue_error.style.color="green";
+	// 	language.style.borderColor = "green";	
 
-	}
+	// }
 
     //  add rows to teble
 		var table = document.getElementsByTagName("table")[0];
@@ -141,7 +141,7 @@ function valider(event){
 		row.insertCell(3).innerHTML = date.value;
 		row.insertCell(4).innerHTML = language.options[language.selectedIndex].value;
 		row.insertCell(5).innerHTML = '<input  style="width:60px , 	background-color: #684c3ec0"type="submit" onclick="deleterow(this)" value="Supprimer">'+
-		'<input style="width:60px" type="submit" onclick="editrow(this)"  value="Modifier">'
+		'<input style="width:60px" type="submit" onclick="editrow(this)" id="btn" value="Modifier">'
 		
 		// clear input text
 		titre.value = "";
@@ -172,7 +172,7 @@ function valider(event){
   // display selected row data into input text
   function selectedRowToInput()
   {
-	  
+
 	  for(var i = 1; i < table.rows.length; i++)
 	  {
 		  table.rows[i].onclick = function()
@@ -187,9 +187,22 @@ function valider(event){
 			
 		  };
 	  }
-  }
-  selectedRowToInput();
+	  document.getElementById("btn").value=="save"
+	}
+	  
 
+ 
+  selectedRowToInput();
+function editrow(r)
+  {
+	  var i=r.parentNode.parentNode.rowIndex;
+	  var R=document.getElementsByTagName("table")[0].rows[i];
+	 R.cells[0].innerHTML=document.getElementById("titre").value;
+	 R.cells[1].innerHTML=document.getElementById("auteur").value;
+	 R.cells[2].innerHTML=document.getElementById("Prix").value;
+	 R.cells[3].innerHTML=document.getElementById("date").value;
+	 R.cells[4].innerHTML=document.getElementById("language").value;
+  }
 
 
 //  delete button
